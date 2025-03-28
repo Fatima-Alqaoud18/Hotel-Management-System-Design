@@ -1,0 +1,34 @@
+# payment.py
+class Payment:
+    """
+    Represents a payment transaction for a booking invoice.
+
+    Attributes:
+        payment_id (str): Unique identifier for the payment.
+        method (str): Payment method (e.g., Credit Card, Cash).
+        amount_paid (float): Amount paid.
+        payment_status (str): Payment status (e.g., Pending, Completed).
+    """
+
+    def __init__(self, payment_id, booking, amount_paid, method):
+        self.__payment_id = payment_id
+        self.__booking = booking
+        self.__amount_paid = amount_paid
+        self.__method = method
+        self.__payment_status = "Pending"
+
+    def process_payment(self):
+        """Process the payment and mark it as completed."""
+        self.__payment_status = "Completed"
+        print("Payment processed successfully.")
+
+    def __str__(self):
+        """Returns a string representation of the payment."""
+        return f"Payment ID: {self.__payment_id} | Method: {self.__method} | Amount Paid: ${self.__amount_paid} | Status: {self.__payment_status}"
+
+# Testing the Payment Class
+if __name__ == "__main__":
+    payment1 = Payment("P001", None, 3000, "Credit Card")
+    print(payment1)  # Test output to check Payment details
+    payment1.process_payment()  # Process payment and change status
+    print(payment1)  # Check the updated payment status
