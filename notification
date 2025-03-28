@@ -1,0 +1,38 @@
+# notification.py
+class Notification:
+    """
+    Handles notifications related to booking updates.
+    """
+
+    @staticmethod
+    def send_confirmation(booking):
+        """
+        Sends a booking confirmation message.
+        """
+        print(f"Booking Confirmation: {booking.get_booking_id()} has been confirmed.")
+
+    @staticmethod
+    def send_cancellation(booking):
+        """
+        Sends a booking cancellation message.
+        """
+        print(f"Booking Cancellation: {booking.get_booking_id()} has been canceled.")
+
+    @staticmethod
+    def send_update(booking):
+        """
+        Sends a booking update message.
+        """
+        print(f"Booking Update: {booking.get_booking_id()} has been updated.")
+
+# Testing the Notification Class
+if __name__ == "__main__":
+    # Assuming `Booking` class exists and is imported
+    guest1 = Guest("G001", "Fatima Alqaoud", "fatima@gmail.com", "1234567890", LoyaltyStatus.ACTIVE)
+    room1 = Room("101", "Deluxe Suite", ["Wi-Fi", "TV", "Fridge", "Drinks", "Food"], 150.0)
+    booking1 = Booking("B001", guest1, room1, "2025-04-10", "2025-04-15")
+
+    # Send confirmation, cancellation, and update
+    Notification.send_confirmation(booking1)
+    Notification.send_cancellation(booking1)
+    Notification.send_update(booking1)
