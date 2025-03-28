@@ -1,0 +1,46 @@
+# loyalty_program.py
+class LoyaltyProgram:
+    """
+    Represents a guest's loyalty program details.
+
+    Attributes:
+        program_id (str): Unique identifier for the loyalty program.
+        points_earned (int): Total points earned by the guest.
+        points_redeemed (int): Total points redeemed by the guest.
+        available_rewards (list): Available rewards that can be redeemed.
+    """
+
+    def __init__(self, program_id, available_rewards):
+        self.__program_id = program_id
+        self.__points_earned = 0
+        self.__points_redeemed = 0
+        self.__available_rewards = available_rewards
+
+    def earn_points(self, points):
+        """Earn loyalty points."""
+        self.__points_earned += points
+
+    def redeem_points(self, points):
+        """Redeem loyalty points."""
+        if points <= self.__points_earned:
+            self.__points_earned -= points
+            self.__points_redeemed += points
+        else:
+            print("Not enough points to redeem.")
+
+    def __str__(self):
+        """Returns a string representation of the loyalty program."""
+        return f"Loyalty Program ID: {self.__program_id} | Points Earned: {self.__points_earned} | Points Redeemed: {self.__points_redeemed}"
+
+    # Getter methods
+    def get_points_balance(self):
+        return self.__points_earned - self.__points_redeemed
+
+
+# Testing the LoyaltyProgram Class
+if __name__ == "__main__":
+    loyalty_program = LoyaltyProgram("LP001", ["Free Breakfast", "Late Checkout"])
+    print(loyalty_program)  # Initial loyalty program details
+    loyalty_program.earn_points(500)  # Earn some points
+    loyalty_program.redeem_points(200)  # Redeem some points
+    print(loyalty_program)  # Check updated loyalty program details
